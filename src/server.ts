@@ -15,6 +15,8 @@ import { Request,Response } from "express";
 import logger from "./utils/logger";
 db();
 
+const port = process.env.PORT || 10000;
+
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -33,6 +35,6 @@ app.get("/serverUp", async(req:Request,res:Response)=>{
   }
 });
 
-app.listen(PORT, () => {
-  logger.info(`Server has started and running on port ${PORT}`);
+app.listen(port, () => {
+  logger.info(`Server has started and running on port ${port}`);
 });
