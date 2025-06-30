@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 const db = require("./config/dbConnect");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 8001;
 const workspace = require("./Routes/workspace.route");
 const categoryRouter = require("./Routes/category.route");
 const snippet = require("./Routes/snippet.route");
@@ -15,7 +14,7 @@ import { Request,Response } from "express";
 import logger from "./utils/logger";
 db();
 
-const port = 10000;
+const PORT = process.env.PORT || 10000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
@@ -35,6 +34,6 @@ app.get("/serverUp", async(req:Request,res:Response)=>{
   }
 });
 
-app.listen(port, () => {
-  logger.info(`Server has started and running on port ${port}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`App is running on http://0.0.0.0:${PORT}`);
 });
