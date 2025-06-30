@@ -15,7 +15,7 @@ import { Request,Response } from "express";
 import logger from "./utils/logger";
 db();
 
-const port = process.env.PORT || 10000;
+const port = 10000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
