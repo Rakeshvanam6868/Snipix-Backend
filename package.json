@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
     "start": "node dist/server.js",
+    "build": "tsc",
     "dev": "nodemon --experimental-specifier-resolution=node src/server.ts"
   },
   "keywords": [],
