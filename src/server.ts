@@ -11,7 +11,7 @@ const user = require("./Routes/user.route");
 dotenv.config();
 
 import { Request,Response } from "express";
-import logger from "./utils/logger";
+
 db();
 
 const PORT = process.env.PORT || 4000;
