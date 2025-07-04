@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import {
   CREATE_CATEGORY,
   DELETE_CATEGORIES,
-  FETCH_CATEGORIES_BY_WORKSPACE,
+  FETCH_CATEGORIES_BY_WORKSPACE,   
   UPDATE_CATEGORY,
 } from "../services/category.service";
 

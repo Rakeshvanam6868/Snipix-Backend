@@ -31,7 +31,7 @@ export interface SNIPPET_SCHEMA {
   tags: string[];
   category_id: mongoose.Schema.Types.ObjectId;
   share_id: string;
-  comments: comment[];
+  comments: comment[];    
 }
 
 export interface SHARE_TO_EMAIL {
