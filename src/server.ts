@@ -3,11 +3,13 @@ const dotenv = require("dotenv");
 const db = require("./config/dbConnect");
 const app = express();
 const cors = require("cors");
+
 const workspace = require("./Routes/workspace.route");
 const categoryRouter = require("./Routes/category.route");
 const snippet = require("./Routes/snippet.route");
 const Share = require("./Routes/share.route");
 const user = require("./Routes/user.route");
+
 dotenv.config();
 
 import { Request,Response } from "express";
@@ -16,7 +18,16 @@ db();
 
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+// CORS Configuration
+const allowedOrigins = [
+  "http://localhost:4001",                 // for local dev
+  "https://snipix.vercel.app/"     // replace with your Vercel frontend URL
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
