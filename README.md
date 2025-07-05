@@ -1,8 +1,8 @@
-## SnipSavvy 🚀
+## Snipix 🚀
 
-SnipSavvy is a code snippet management platform, coded by developers for developers
+Snipix is a code snippet management platform, coded by developers for developers
 
-Website Link: https://snipsavvy.vercel.app/
+Website Link: https://Snipix.vercel.app/
 
 ## ⭐Features 
 
@@ -34,7 +34,7 @@ Website Link: https://snipsavvy.vercel.app/
  * **MongoDB**
  * **REST API**
 
-
+<!-- 
 ## ⭐Getting Started with Contributing
 
 Thank you for considering contributing to our project. Your involvement is invaluable to us. To ensure a smooth and collaborative process, please follow these steps:
@@ -115,4 +115,4 @@ Please ensure that your pull request meets the following requirements:
 
 
 ### Additional Notes
-[Include any additional information or notes that may be relevant for reviewers.]
+[Include any additional information or notes that may be relevant for reviewers.] -->
