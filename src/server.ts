@@ -14,22 +14,30 @@ dotenv.config();
 
 import { Request,Response } from "express";
 
+
+
 db();
 
 const PORT = process.env.PORT || 4000;
 
 // CORS Configuration
 const allowedOrigins = [
-  "http://localhost:4001",                 // for local dev
+  "http://localhost:3000",                 // for local dev
   "https://snipix.vercel.app/"     // replace with your Vercel frontend URL
 ];
 
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: allowedOrigins, // Allow your frontend
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 app.use("/v1/api/workspace", workspace);
 app.use("/v1/api/category", categoryRouter);
