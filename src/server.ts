@@ -26,14 +26,36 @@ const allowedOrigins = [
   "https://snipix.vercel.app/"     // replace with your Vercel frontend URL
 ];
 
+interface CorsOptions {
+  origin: (
+    origin: string | undefined,
+    callback: (err: Error | null, allow?: boolean) => void
+  ) => void;
+  credentials: boolean;
+  methods: string[];
+  allowedHeaders: string[];
+}
+
 app.use(
   cors({
-    origin: allowedOrigins, // Allow your frontend
+    origin: function (
+      origin: string | undefined,
+      callback: (err: Error | null, allow?: boolean) => void
+    ): void {
+      // allow requests with no origin like Postman or curl
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("CORS policy violation"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  } as CorsOptions)
 );
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
