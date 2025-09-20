@@ -22,19 +22,9 @@ const PORT = process.env.PORT || 4000;
 
 // CORS Configuration
 const allowedOrigins = [
-  "http://localhost:3000",                 // for local dev
-  "https://snipix.vercel.app/"     // replace with your Vercel frontend URL
+  "http://localhost:3000",           // local dev
+  "https://snipix.vercel.app"        // ✅ no trailing slash
 ];
-
-interface CorsOptions {
-  origin: (
-    origin: string | undefined,
-    callback: (err: Error | null, allow?: boolean) => void
-  ) => void;
-  credentials: boolean;
-  methods: string[];
-  allowedHeaders: string[];
-}
 
 app.use(
   cors({
@@ -42,19 +32,23 @@ app.use(
       origin: string | undefined,
       callback: (err: Error | null, allow?: boolean) => void
     ): void {
-      // allow requests with no origin like Postman or curl
+      // allow requests with no origin (like Postman, curl)
       if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       } else {
-        return callback(new Error("CORS policy violation"));
+        console.warn(`CORS blocked request from origin: ${origin}`);
+        return callback(null, false); // just block, don’t throw error
       }
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  } as CorsOptions)
+  })
 );
+
+
+
 
 
 app.use(express.urlencoded({ extended: false }));
